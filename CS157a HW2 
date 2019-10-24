@@ -1,0 +1,6 @@
+select lastname, firstnme, from employee where hiredate between '2000-01-01' and '2005-12-31' order by lastname, firstnme;
+select empno, lastname, firstnme, job, deptno, deptname from employee inner join department on employee.workdept = department.deptno where deptname = 'OPERATIONS' or deptname = 'PLANNING' order by deptname ASC;
+select empno, lastname, firstnme, salary+bonus+comm as total_compensation from employee order by total_compensation DESC;
+select empno, lastname, firstnme, salary+bonus+comm as total_compensation from employee order by total_compensation ASC limit 10;
+select job, count(job) as total from employee group by job order by total DESC;
+select deptno, deptname, count(workdept) as total from (select * from employee inner join department on employee.workdept = department.deptno) group by deptno, deptname order by total;
